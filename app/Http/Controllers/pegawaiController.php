@@ -31,14 +31,23 @@ class pegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5',
-            'email' => 'required|email',
+            'nip' => 'required',
+            'nama_pegawai' => 'required',
+            'masa_kerja' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
-
+        $fileName = time() . '.' . $request->foto->extension();
+        $request->foto->storeAs('public/images', $fileName);
         pegawai::create([
-            'name' => $request->name,
-            'email' => $request->email
+            'nip' => $request->nip,
+            'nama_pegawai' => $request->nama_pegawai,
+            'masa_kerja' => $request->masa_kerja,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'foto' => $request->foto
+
         ]);
 
         return redirect()->route('pegawai.index')
