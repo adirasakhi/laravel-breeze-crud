@@ -44,6 +44,7 @@
                 <table class="w-full table-fixed">
                     <thead>
                         <tr class="bg-gray-100">
+                            <th class="px-4 py-2 border">foto</th>
                             <th class="px-4 py-2 border">nip</th>
                             <th class="px-4 py-2 border">nama pegawai</th>
                             <th class="px-4 py-2 border">masa kerja</th>
@@ -56,6 +57,11 @@
                         @if(!empty($pegawai))
                             @foreach($pegawai as $row)
                                 <tr>
+                                    @if ($row->foto != null)
+                                    <td class="px-4 py-2 border"><img src="{{asset('storage/images/'. $row->foto)}}"></td>
+                                    @else
+                                    <td class="px-4 py-2 border"><img src="{{ asset('default/images/woman.jpg') }}" alt="Default Profile Image"></td>
+                                @endif
                                     <td class="px-4 py-2 border">{{ $row->nip }}</td>
                                     <td class="px-4 py-2 border">{{ $row->nama_pegawai }}</td>
                                     <td class="px-4 py-2 border">{{ $row->masa_kerja . '    tahun' }}</td>

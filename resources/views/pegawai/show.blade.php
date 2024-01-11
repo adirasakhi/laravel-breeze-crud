@@ -14,21 +14,33 @@
                 <table class="w-full table-fixed">
                     <tbody>
                         <tr>
-                            <td class="px-4 py-2 font-bold">Name</td>
-                            <td>{{ $pegawai->name }}</td>
+                            <td class="px-4 py-2 font-bold">Nip</td>
+                            <td>{{ $pegawai->nip }}</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2 font-bold">Email</td>
-                            <td>{{ $pegawai->email }}</td>
+                            <td class="px-4 py-2 font-bold">Nama</td>
+                            <td>{{ $pegawai->nama_pegawai }}</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2 font-bold">Created on</td>
-                            <td>{{ date_format($pegawai->created_at, 'jS F Y g:i A') }}</td>
+                            <td class="px-4 py-2 font-bold">Masa Kerja</td>
+                            <td>{{ $pegawai->masa_kerja }}</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2 font-bold">Last updated</td>
-                            <td>{{ date_format($pegawai->updated_at, 'jS F Y g:i A') }}</td>
+                            <td class="px-4 py-2 font-bold">Jenis Kelamin</td>
+                            <td>{{ $pegawai->jenis_kelamin }}</td>
                         </tr>
+`                       <tr>
+                            <td class="px-4 py-2 font-bold">Alamat</td>
+                            <td>{{ $pegawai->alamat }}</td>
+                        </tr>
+                        <align>
+                            <tr>
+                                @if ($pegawai->foto != null)
+                                <td class="px-4 py-2 border"><img src="{{asset('storage/images/'. $pegawai->foto)}}"></td>
+                                @else
+                                <td class="px-4 py-2 border"><img src="{{ asset('default/images/woman.jpg') }}" alt="Default Profile Image"></td>
+                            @endif                            </tr>
+                        </align>
                     </tbody>
                 </table>
             </div>
