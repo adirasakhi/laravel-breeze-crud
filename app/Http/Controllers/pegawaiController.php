@@ -80,7 +80,6 @@ class pegawaiController extends Controller
         $fileName = $request->nip . '.' . 'jpg';
 
         if ($request->hasFile('foto')) {
-            // Upload and store the new photo
             $request->foto->storeAs('public/images', $fileName);
         }
 
@@ -102,6 +101,12 @@ class pegawaiController extends Controller
 
     public function destroy(pegawai $pegawai)
     {
+        if ($pegawai->foto) {
+            $fotoPath = public_path('storage/images/') . $pegawai->foto;
+            if (file_exists($fotoPath)) {
+                unlink($fotoPath);
+            }
+        }
         $pegawai->delete();
 
         return redirect()->route('pegawai.index')
