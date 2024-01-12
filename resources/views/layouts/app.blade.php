@@ -54,7 +54,7 @@
             </div> --}}
 
             <div class="text-center text-sm text-gray-500 p-2">
-                <a href="https://mditech.net/?u=lbc">MDITech</a>
+                <a href="#">SHW</a>
             </div>
         {{-- </div> --}}
     </body>
