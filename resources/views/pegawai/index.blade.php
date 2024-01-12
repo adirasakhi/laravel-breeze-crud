@@ -58,11 +58,15 @@
                             @foreach($pegawai as $row)
                                 <tr>
                                     @if ($row->foto != null)
-                                    <td class="px-4 py-2 border"><img src="{{asset('storage/images/'. $row->foto)}}"></td>
+                                    <td class="px-4 py-2 border"><img src="{{ asset('storage/images/'. $row->foto) }}"></td>
+                                @else
+                                    @if ($row->jenis_kelamin == 'pria')
+                                        <td class="px-4 py-2 border"><img src="{{ asset('default/images/man.jpg') }}" alt="Default Profile Image"></td>
                                     @else
-                                    <td class="px-4 py-2 border"><img src="{{ asset('default/images/woman.jpg') }}" alt="Default Profile Image"></td>
+                                        <td class="px-4 py-2 border"><img src="{{ asset('default/images/woman.jpg') }}" alt="Default Profile Image"></td>
+                                    @endif
                                 @endif
-                                    <td class="px-4 py-2 border">{{ $row->nip }}</td>
+                                    <td class="px-3 py-2 border"><p class="text-sm">{{ $row->nip }}</p></td>
                                     <td class="px-4 py-2 border">{{ $row->nama_pegawai }}</td>
                                     <td class="px-4 py-2 border">{{ $row->masa_kerja . '    tahun' }}</td>
                                     <td class="px-4 py-2 border">{{ $row->jenis_kelamin }}</td>
